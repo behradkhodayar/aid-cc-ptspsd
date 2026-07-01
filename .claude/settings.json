@@ -1,0 +1,46 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(make *)",
+      "Bash(docker compose *)",
+      "Bash(uv *)",
+      "Bash(ruff *)",
+      "Bash(mypy *)",
+      "Bash(pytest *)",
+      "Bash(alembic *)",
+      "Bash(pnpm *)",
+      "Bash(npm run *)",
+      "Bash(node *)",
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git add *)",
+      "Bash(git branch *)",
+      "Bash(git checkout *)",
+      "Bash(gh pr *)",
+      "Bash(gh issue *)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(git push *)",
+      "Bash(git reset --hard *)",
+      "Bash(docker compose down -v)",
+      "Read(./.env)",
+      "Read(./**/.env)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=$(jq -r '.tool_input.file_path'); case \"$f\" in *.py) ruff format \"$f\" 2>/dev/null; ruff check --fix \"$f\" 2>/dev/null;; *.ts|*.tsx|*.js|*.jsx|*.json|*.css|*.md) (cd apps/web 2>/dev/null && pnpm exec prettier --write \"$f\") 2>/dev/null;; esac; true"
+          }
+        ]
+      }
+    ]
+  }
+}

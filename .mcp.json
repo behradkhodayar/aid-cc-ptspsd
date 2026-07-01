@@ -1,0 +1,4 @@
+{
+  "//": "Project-scoped MCP servers, shared with the team. Personal servers go in ~/.claude.json (claude mcp add --scope user). Reference secrets via ${ENV_VAR}, never inline.",
+  "mcpServers": {}
+}

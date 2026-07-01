@@ -1,0 +1,38 @@
+# Secrets & local env
+.env
+.env.*
+!.env.example
+*.local
+
+# Claude Code — personal, machine-local
+.claude/settings.local.json
+.claude/agent-memory-local/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+*.egg-info/
+
+# Node / TypeScript
+node_modules/
+apps/web/dist/
+apps/web/coverage/
+*.tsbuildinfo
+.vite/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Docker
+*.pid

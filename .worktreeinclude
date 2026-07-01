@@ -1,0 +1,8 @@
+# Gitignored files copied into each new worktree Claude creates.
+# Uses .gitignore syntax; only files that match AND are gitignored are copied.
+
+# Local environment — worktrees start without these.
+.env
+
+# Personal Claude settings, if present.
+.claude/settings.local.json

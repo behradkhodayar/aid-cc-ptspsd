@@ -1,0 +1,7 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-settings.json",
+  "//": "Copy to settings.local.json for personal, machine-local overrides. This file is gitignored.",
+  "permissions": {
+    "allow": ["Bash(docker *)"]
+  }
+}
