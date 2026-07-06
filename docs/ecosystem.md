@@ -7,9 +7,32 @@ bundled, and how to activate it.
 
 > **Ground rule: third-party skill packs are untrusted code.** While vetting the repos
 > on this page, three of the nine served content with embedded prompt-injection attempts
-> (fake harness messages aimed at the researching agent). Nothing here is vendored into
-> the template; everything is opt-in, and the [checklist](#before-you-install-any-skill-pack)
-> at the bottom applies before any install.
+> (fake harness messages aimed at the researching agent). Nothing from this shortlist is
+> vendored into the template; everything is opt-in, and the
+> [checklist](#before-you-install-any-skill-pack) at the bottom applies before any install.
+
+The template does bundle two **first-party** stack skills — written and maintained by the
+upstream orgs themselves, which clears a much higher provenance bar than any community pack:
+
+| Bundled skill                                                                 | Source                  | License | Why it's in                                     |
+| ----------------------------------------------------------------------------- | ----------------------- | ------- | ----------------------------------------------- |
+| [`fastapi`](https://github.com/fastapi/fastapi/tree/master/fastapi/.agents/skills/fastapi) | FastAPI (official repo) | MIT     | Current framework idioms, straight from the source |
+| [`supabase-postgres-best-practices`](https://github.com/supabase/agent-skills) | Supabase (official org) | MIT     | Engine-level Postgres rules; nothing Supabase-cloud-specific required |
+
+Both passed `make skills-scan` and a manual read of every file before landing. To pull
+upstream updates, re-fetch the files from the source repos and re-run the scan — same
+checklist as any other skill. One caveat is pinned in `.claude/rules/python.md`: the
+FastAPI skill prefers SQLModel, this template uses SQLAlchemy 2.0, and the rule wins.
+
+A third skill earns a recommendation but **can't be vendored**:
+[`vercel-react-best-practices`](https://skills.sh/vercel-labs/agent-skills/vercel-react-best-practices)
+(Vercel Labs, 500K+ installs) — the source repo publishes **no license**, so copying it
+into an MIT template is redistribution without permission. Install it yourself instead:
+
+```bash
+npx skills add vercel-labs/agent-skills@vercel-react-best-practices   # then:
+make skills-scan
+```
 
 ## The shortlist
 

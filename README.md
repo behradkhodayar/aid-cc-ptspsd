@@ -19,9 +19,17 @@ Everything an agent needs to be productive on day one is checked in:
 - **`.claude/rules/`** — path-scoped conventions that load only when the relevant
   files enter context (Python rules for `apps/api`, TS rules for `apps/web`, etc.).
 - **`.claude/skills/`** — repeatable workflows (`/db-migrate`, `/db-reset`,
-  `/new-migration`) so common chores are one command.
+  `/new-migration`) so common chores are one command, plus two **first-party stack
+  skills** vendored from their upstream orgs (both MIT, both scanned with
+  `make skills-scan`): [`fastapi`](https://github.com/fastapi/fastapi) best practices
+  and [`supabase-postgres-best-practices`](https://github.com/supabase/agent-skills)
+  for engine-level Postgres guidance.
 - **`.claude/agents/`** — a read-only `code-reviewer` subagent.
-- **`.claude/settings.json`** — least-privilege permissions plus format-on-write hooks.
+- **`.claude/settings.json`** — least-privilege permissions, format-on-write hooks, and
+  **code intelligence**: the official `pyright-lsp` and `typescript-lsp` plugins are
+  enabled at project scope, so Claude sees type errors immediately after every edit and
+  navigates by symbol instead of grep. Run `make lsp-install` once to put the two
+  language-server binaries on your PATH.
 
 ## Layout
 
@@ -49,6 +57,9 @@ make up                          # docker compose up --build -d
 
 # 2. Apply database migrations.
 make migrate
+
+# 3. Optional: language-server binaries for Claude Code's code intelligence.
+make lsp-install
 
 # API   → http://localhost:8000  (docs at /docs)
 # Web   → http://localhost:5173

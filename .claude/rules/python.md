@@ -39,3 +39,5 @@ src/app/
 
 - The schema is owned by Alembic migrations under `migrations/`. **Never** `create_all()` in app code
   outside tests, and never hand-edit tables. Generate migrations with `make revision m="..."`.
+- The bundled `fastapi` skill prefers SQLModel; **this project uses SQLAlchemy 2.0 + Alembic**.
+  When the skill and this rule disagree, this rule wins.

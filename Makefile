@@ -5,7 +5,7 @@ COMPOSE := docker compose
 .PHONY: help up down restart logs ps build \
         migrate revision db-reset db-shell \
         test api-test web-test lint api-lint web-lint fmt api-fmt web-fmt \
-        api-shell web-shell install skills-scan
+        api-shell web-shell install skills-scan lsp-install
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
@@ -80,6 +80,13 @@ web-shell: ## Shell into the web container
 	$(COMPOSE) exec web sh
 
 ## ---- Agent harness ----
+lsp-install: ## Install language-server binaries for Claude Code code intelligence
+	@command -v uv >/dev/null 2>&1 || { echo "uv is required: https://docs.astral.sh/uv/"; exit 1; }
+	@command -v npm >/dev/null 2>&1 || { echo "npm is required (ships with Node.js)"; exit 1; }
+	uv tool install pyright
+	npm install -g typescript-language-server typescript
+	@echo "Done. Claude Code picks both up via the pyright-lsp / typescript-lsp plugins."
+
 skills-scan: ## Scan .claude/skills with NVIDIA SkillSpector (opt-in; needs uv on the host)
 	@command -v uv >/dev/null 2>&1 || { echo "uv is required: https://docs.astral.sh/uv/"; exit 1; }
 	@for d in .claude/skills/*/; do \
