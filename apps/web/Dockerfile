@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # ---- base: node + pnpm ----
-FROM node:24-alpine AS base
+FROM node:26-alpine AS base
 RUN corepack enable
 WORKDIR /app
 
