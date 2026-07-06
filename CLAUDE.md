@@ -26,6 +26,8 @@ path-specific detail lives in `.claude/rules/` and loads on demand.
 - Keep the API and web app decoupled — the only coupling is the HTTP contract in `apps/web/src/api.ts`.
 - Tests live next to the code they cover (`test_*.py` for Python, `*.test.tsx` for TS).
 - Follow the branch → PR → review → squash-merge flow; never push directly to `main`.
+- Third-party skills are untrusted code: vet with `make skills-scan` and see
+  `docs/ecosystem.md` before adopting any.
 
 ## When you touch...
 
