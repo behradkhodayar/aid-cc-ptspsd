@@ -5,7 +5,7 @@ with **Claude Code** as a first-class collaborator.
 
 | Layer         | Tech                                                      |
 | ------------- | --------------------------------------------------------- |
-| Backend API   | Python 3.13 · FastAPI · SQLAlchemy 2.0 · Alembic · `uv`   |
+| Backend API   | Python 3.14 · FastAPI · SQLAlchemy 2.0 · Alembic · `uv`   |
 | Frontend      | TypeScript · React 19 · Vite · Vitest                     |
 | Database      | PostgreSQL 17 (local Docker)                              |
 | Orchestration | Docker + Docker Compose                                   |

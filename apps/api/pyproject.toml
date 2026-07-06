@@ -2,7 +2,7 @@
 name = "app"
 version = "0.1.0"
 description = "FastAPI backend for the polyglot template"
-requires-python = ">=3.13"
+requires-python = ">=3.14"
 dependencies = [
     "fastapi>=0.115",
     "uvicorn[standard]>=0.50.1",
@@ -27,7 +27,7 @@ package = false
 
 [tool.ruff]
 line-length = 100
-target-version = "py313"
+target-version = "py314"
 src = ["src", "tests"]
 
 [tool.ruff.lint]
@@ -38,7 +38,7 @@ select = ["E", "F", "I", "N", "UP", "B", "A", "C4", "SIM", "RUF"]
 "tests/*" = ["B"]
 
 [tool.mypy]
-python_version = "3.13"
+python_version = "3.14"
 strict = true
 plugins = ["pydantic.mypy"]
 mypy_path = "src"

@@ -13,10 +13,10 @@ Loaded when editing Dockerfiles or compose config.
 
 - **Multi-stage builds.** A `dev` target with hot-reload tooling and source mounts; a lean `runtime`
   target for anything shipped. Never bake dev dependencies into the runtime stage.
-- **Pin base images** to a major version and prefer `-slim` / `-alpine` (`python:3.13-slim`,
+- **Pin base images** to a major version and prefer `-slim` / `-alpine` (`python:3.14-slim`,
   `node:24-alpine`, `postgres:17-alpine`).
 - **Run as a non-root user** in the runtime stage.
-- Order layers cheap-to-expensive: copy dependency manifests and install *before* copying source,
+- Order layers cheap-to-expensive: copy dependency manifests and install _before_ copying source,
   so code edits don't bust the dependency cache.
 - Keep `.dockerignore` tight — never send `.git`, `node_modules`, `.venv`, or `.env` into the build context.
 - Add a `HEALTHCHECK` (or a compose `healthcheck`) to every long-running service.
