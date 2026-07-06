@@ -5,7 +5,7 @@ COMPOSE := docker compose
 .PHONY: help up down restart logs ps build \
         migrate revision db-reset db-shell \
         test api-test web-test lint api-lint web-lint fmt api-fmt web-fmt \
-        api-shell web-shell install
+        api-shell web-shell install skills-scan
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
@@ -78,3 +78,11 @@ api-shell: ## Shell into the api container
 
 web-shell: ## Shell into the web container
 	$(COMPOSE) exec web sh
+
+## ---- Agent harness ----
+skills-scan: ## Scan .claude/skills with NVIDIA SkillSpector (opt-in; needs uv on the host)
+	@command -v uv >/dev/null 2>&1 || { echo "uv is required: https://docs.astral.sh/uv/"; exit 1; }
+	@for d in .claude/skills/*/; do \
+		echo "== $$d"; \
+		uvx --from git+https://github.com/NVIDIA/skillspector.git skillspector scan "$$d" || exit 1; \
+	done

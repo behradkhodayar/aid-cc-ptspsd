@@ -3,13 +3,13 @@
 A batteries-included **GitHub template** for building full-stack, polyglot applications
 with **Claude Code** as a first-class collaborator.
 
-| Layer        | Tech                                                        |
-| ------------ | ---------------------------------------------------------- |
-| Backend API  | Python 3.13 · FastAPI · SQLAlchemy 2.0 · Alembic · `uv`    |
-| Frontend     | TypeScript · React 19 · Vite · Vitest                      |
-| Database     | PostgreSQL 17 (local Docker)                                |
-| Orchestration| Docker + Docker Compose                                     |
-| AI harness   | `.claude/` — rules, skills, subagents, scoped permissions   |
+| Layer         | Tech                                                      |
+| ------------- | --------------------------------------------------------- |
+| Backend API   | Python 3.13 · FastAPI · SQLAlchemy 2.0 · Alembic · `uv`   |
+| Frontend      | TypeScript · React 19 · Vite · Vitest                     |
+| Database      | PostgreSQL 17 (local Docker)                              |
+| Orchestration | Docker + Docker Compose                                   |
+| AI harness    | `.claude/` — rules, skills, subagents, scoped permissions |
 
 ## Why this template
 
@@ -73,6 +73,14 @@ make lint        # run all linters
 make fmt         # auto-format everything
 make db-reset    # drop, recreate and re-migrate the dev database
 ```
+
+## Ecosystem add-ons
+
+The `.claude/` harness above is the batteries. For optional extras — a skill security
+scanner, codebase knowledge graphs, agent memory, deep-research agents — see
+[docs/ecosystem.md](docs/ecosystem.md): what's worth adding, what to avoid, and how to
+activate each one safely. Start with `make skills-scan` before adopting any third-party
+skill.
 
 ## Turning this into your project
 
