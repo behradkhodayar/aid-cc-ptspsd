@@ -2,8 +2,11 @@
 
 # ---- base: node + pnpm ----
 FROM node:24-alpine AS base
-RUN corepack enable
 WORKDIR /app
+# pnpm version comes from package.json's packageManager field — the single source of
+# truth. Not corepack: Node stopped shipping it in images >= 25 (see issue #12).
+COPY package.json ./
+RUN npm install -g "$(node -p 'require("./package.json").packageManager')"
 
 # ---- deps: install from lockfile, cached ----
 FROM base AS deps
