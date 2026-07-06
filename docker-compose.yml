@@ -33,8 +33,11 @@ services:
     ports:
       - "${API_PORT:-8000}:8000"
     volumes:
-      # Live-reload in dev: mount source over the image copy.
+      # Live-reload in dev: mount source over the image copy, but keep the
+      # image's venv — the bind mount would otherwise hide /app/.venv
+      # (same trick as node_modules on the web service).
       - ./apps/api:/app
+      - /app/.venv
     depends_on:
       db:
         condition: service_healthy
