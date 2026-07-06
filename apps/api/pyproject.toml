@@ -5,9 +5,9 @@ description = "FastAPI backend for the polyglot template"
 requires-python = ">=3.13"
 dependencies = [
     "fastapi>=0.115",
-    "uvicorn[standard]>=0.34",
-    "sqlalchemy[asyncio]>=2.0.36",
-    "psycopg[binary]>=3.2",
+    "uvicorn[standard]>=0.50.1",
+    "sqlalchemy[asyncio]>=2.0.51",
+    "psycopg[binary]>=3.3.4",
     "alembic>=1.14",
     "pydantic>=2.10",
     "pydantic-settings>=2.7",
