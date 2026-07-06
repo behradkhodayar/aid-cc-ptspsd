@@ -1,6 +1,6 @@
 # API — FastAPI backend
 
-Python 3.13 · FastAPI · SQLAlchemy 2.0 (async) · Alembic · `uv`.
+Python 3.14 · FastAPI · SQLAlchemy 2.0 (async) · Alembic · `uv`.
 
 Owns the database schema. The web app talks to it over HTTP; nothing else touches Postgres directly.
 
@@ -41,13 +41,13 @@ tests/          pytest (async), one file per route module
 
 ## Common tasks
 
-| Task              | Command                                  |
-| ----------------- | ---------------------------------------- |
-| New migration     | `make revision m="add users table"`      |
-| Apply migrations  | `make migrate`                           |
-| Test              | `make api-test` / `uv run pytest`        |
-| Lint + type-check | `make api-lint`                          |
-| Format            | `make api-fmt`                           |
+| Task              | Command                             |
+| ----------------- | ----------------------------------- |
+| New migration     | `make revision m="add users table"` |
+| Apply migrations  | `make migrate`                      |
+| Test              | `make api-test` / `uv run pytest`   |
+| Lint + type-check | `make api-lint`                     |
+| Format            | `make api-fmt`                      |
 
 ## Adding a resource
 

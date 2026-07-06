@@ -12,7 +12,7 @@ Loaded when working on backend code under `apps/api`.
 - **Package manager:** `uv` (not pip/poetry). Add deps with `uv add <pkg>`; dev deps with `uv add --dev <pkg>`.
 - **Lint + format:** `ruff` (`ruff check`, `ruff format`). **Type-check:** `mypy src` in strict mode.
 - **Tests:** `pytest`. Run via `make api-test`.
-- Target **Python 3.13**.
+- Target **Python 3.14**.
 
 ## Style
 
