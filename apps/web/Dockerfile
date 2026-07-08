@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # ---- base: node + pnpm ----
-FROM node:24-alpine AS base
+FROM node:25-alpine AS base
 WORKDIR /app
 # pnpm version comes from package.json's packageManager field — the single source of
 # truth. Not corepack: Node stopped shipping it in images >= 25 (see issue #12).
