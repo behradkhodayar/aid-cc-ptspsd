@@ -4,8 +4,8 @@ version = "0.1.0"
 description = "FastAPI backend for the polyglot template"
 requires-python = ">=3.14"
 dependencies = [
-    "fastapi>=0.115",
-    "uvicorn[standard]>=0.50.1",
+    "fastapi>=0.139.2",
+    "uvicorn[standard]>=0.51.0",
     "sqlalchemy[asyncio]>=2.0.51",
     "psycopg[binary]>=3.3.4",
     "alembic>=1.14",
@@ -18,8 +18,8 @@ dev = [
     "pytest>=8.3",
     "pytest-asyncio>=0.25",
     "httpx>=0.28",
-    "ruff>=0.9",
-    "mypy>=1.14",
+    "ruff>=0.15.22",
+    "mypy>=2.3.0",
 ]
 
 [tool.uv]
